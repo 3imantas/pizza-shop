@@ -1,0 +1,10 @@
+.bg-photo{
+    
+    background-image: url('');
+    background-size: cover;
+    background-position: center;
+}
+
+p, .label-colo, h2, h4{
+    color: rgb(0, 0, 0);
+}
