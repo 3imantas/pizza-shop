@@ -41,13 +41,6 @@ export function Home() {
         }); 
 
         setSizeCheckboxes(prevCheckboxes);
-                /*
-        setCheckboxes((prevCheckboxes) => {
-          return prevCheckboxes.map((checkbox) =>
-            checkbox.id === id ? { ...checkbox, checked: !checkbox.checked } : checkbox
-          );
-        });
-        */
     };
 
     const handleToppingChange = (event) => {
@@ -79,11 +72,8 @@ export function Home() {
         
             const cost = await response.json();
         
-            // Do something with the calculated cost value
-            //console.log("Calculated cost:", cost);
             setPizza((prevPizza) => ({ ...prevPizza, Price: cost.toFixed(2) }));
         } catch (error) {
-            // Handle any errors
             console.error("Error calculating pizza cost:", error);
         }
     };
@@ -168,7 +158,6 @@ export function Home() {
             </div>
             </div>
             <div>
-            {/* Your component JSX */}
             {orderSubmitted && (
                 <div className="alert alert-success position-fixed bottom-0 end-0 m-3" role="alert">
                     Order submitted successfully!
@@ -177,11 +166,4 @@ export function Home() {
             </div>
         </div>
       );
-      
-      
-      
-      
-      
-      
-      
 }

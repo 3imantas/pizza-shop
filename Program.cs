@@ -33,28 +33,4 @@ app.MapControllerRoute(
 
 app.MapFallbackToFile("index.html");
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
-
 app.Run();
-
-
-/*
-using System;
-
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        var tester = new DatabaseTester();
-        tester.TestDatabase();
-
-        // Add any additional code or logic as needed
-
-        //Console.WriteLine("Press any key to exit...");
-        //Console.ReadKey();
-    }
-}
-*/
