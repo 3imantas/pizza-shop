@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 export function Orders() {
     class PizzaOrderModel {
-      constructor(id, name, size, price, toppings) {
+      constructor(id, formattedDate, name, size, price, toppings) {
         this.id = id;
+        this.formattedDate = formattedDate;
         this.name = name;
         this.size = size;
         this.price = price;
@@ -23,6 +24,7 @@ export function Orders() {
             (order) => {
               return new PizzaOrderModel(
                 order.pizzaOrderId,
+                order.formattedDate,
                 order.name,
                 order.size,
                 order.price.toFixed(2),
@@ -42,15 +44,18 @@ export function Orders() {
     // Render the pizza orders
     return (
       <div>
-        <h2 className="mb-4">Order History</h2>
-        <ul className="list-group">
+        <h2 className="p-4">Order History</h2>
+        <ul className="list-group ps-5 pe-5">
           {pizzaOrders.map((order) => (
             <li key={order.id} className="list-group-item">
-              <p className="mb-1">ID: {order.id}</p>
-              <p className="mb-1">Name: {order.name}</p>
-              <p className="mb-1">Size: {order.size}</p>
-              <p className="mb-1">Price: {order.price}</p>
-              <p className="mb-1">Toppings: {order.toppings.join(', ')}</p>
+              <p className="mb-1"><b>{order.name}</b></p>
+              <p className="mb-1"><b>Order Id:</b> {order.id}</p>
+              <p className="mb-1"><b>Date:</b> {order.formattedDate}</p>
+              <p className="mb-1"><b>Size:</b> {order.size}</p>
+              {order.toppings.length > 0 &&
+                <p className="mb-1 font-weight-bold"><b>Toppings:</b> {order.toppings.join(', ')}</p>
+              }
+              <p className="mb-1"><b>Price:</b> {order.price} €</p>
             </li>
           ))}
         </ul>

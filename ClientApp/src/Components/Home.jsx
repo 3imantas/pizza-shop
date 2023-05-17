@@ -17,6 +17,8 @@ export function Home() {
         Toppings: []
       })
 
+    const [orderSubmitted, setOrderSubmitted] = useState(false);
+
     useEffect(() => {
         calculateCost(pizza);
     }, []);
@@ -99,7 +101,11 @@ export function Home() {
             if (!response.ok) {
             throw new Error("response was not ok.");
             }
-        
+            
+            setOrderSubmitted(true);
+            setTimeout(() => {
+                setOrderSubmitted(false);
+            }, 2000)
             console.log("Order Successfully Submitted")
         
         } catch (error) {
@@ -111,13 +117,13 @@ export function Home() {
 
     return (
         <div className='main'>
-          <div className="container-fluid bg-light min-vh-100 d-flex align-items-center justify-content-center bg-photo">
-            <div className="row">
+          <div className="container-fluid bg-grey min-vh-100 d-flex align-items-center justify-content-center">
+            <div className="row bg-white px-5 py-5 pe-1 rounded-5">
               <div className="col-lg-6">
-                <img className="pizza-img" src="./pizza.jpg" alt="pizza" />
+                <img className="img-fluid" src={require('../pizza.jpg')} alt="pizza" />
               </div>
               <div className="col-lg-6">
-                <div className="p-4">
+                <div className="ps-4">
                   <h2>Customize Your Pizza</h2>
                   <div className="mb-4">
                     <h4>Size:</h4>
@@ -160,9 +166,22 @@ export function Home() {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+            <div>
+            {/* Your component JSX */}
+            {orderSubmitted && (
+                <div className="alert alert-success position-fixed bottom-0 end-0 m-3" role="alert">
+                    Order submitted successfully!
+                </div>
+            )}
+            </div>
         </div>
       );
+      
+      
+      
+      
+      
       
       
 }

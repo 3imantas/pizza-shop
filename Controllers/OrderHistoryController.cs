@@ -38,32 +38,7 @@ namespace MyApiProject.Controllers
                 }
                 _db.SaveChanges();
             }
-            
-            /*
-                var pizzaOrders = _db.PizzaOrders?.Include(po => po.Toppings).ToList();
-
-                if (pizzaOrders != null)
-                {
-                    foreach (var pizzaOrderr in pizzaOrders)
-                    {
-                        Console.WriteLine($"Pizza Order ID: {pizzaOrderr.PizzaOrderId}");
-                        Console.WriteLine($"Name: {pizzaOrderr.Name}");
-                        Console.WriteLine($"Size: {pizzaOrderr.Size}");
-                        Console.WriteLine($"Price: {pizzaOrderr.Price}");
-                        Console.WriteLine("Toppings:");
-
-                        if (pizzaOrderr.Toppings != null)
-                        {
-                            foreach (var topping in pizzaOrderr.Toppings)
-                            {
-                                Console.WriteLine($"- {topping.Name}");
-                            }
-                        }
-
-                        Console.WriteLine();
-                    }
-                }
-            */
+                        
             return Ok();
         }
 
